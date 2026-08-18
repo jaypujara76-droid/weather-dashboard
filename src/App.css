@@ -39,9 +39,10 @@
 .preview-card {
   max-width: 400px;
   margin: 20px auto;
-  padding: 20px;
+  padding: 25px;
   border: 1px solid #ddd;
-  border-radius: 10px;
+  border-radius: 12px;
+  text-align: center;
 }
 
 .preview-card p {
@@ -235,9 +236,6 @@
   }
 
   .forecast-list {
-    grid-template-columns: repeat(
-      2,
-      1fr
-    );
+    grid-template-columns: repeat(2, 1fr);
   }
 }
