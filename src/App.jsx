@@ -168,7 +168,6 @@ function App() {
       {weather && (
         <div>
           <h2>Current Weather</h2>
-
           <WeatherCard weather={weather} unit={unit} />
         </div>
       )}

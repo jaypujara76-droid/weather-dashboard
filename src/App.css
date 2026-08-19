@@ -189,6 +189,21 @@
 .forecast-card span {
   color: #666;
 }
+.forecast-date {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.forecast-date h3 {
+  margin: 0;
+}
+
+.forecast-date span {
+  display: block;
+  font-size: 14px;
+  color: #666;
+  margin-top: 4px;
+}
 .loading {
   display: flex;
   flex-direction: column;
@@ -255,4 +270,20 @@
 
 .current-weather-icon img {
   display: block;
+}
+
+.current-date {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin: 8px 0 12px;
+}
+
+.current-date strong {
+  font-size: 16px;
+}
+
+.current-date span {
+  font-size: 14px;
+  color: #666;
 }

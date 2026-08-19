@@ -30,7 +30,7 @@ export const getWeather = async (latitude, longitude) => {
     `&daily=weather_code,temperature_2m_max,temperature_2m_min` +
     `&temperature_unit=celsius` +
     `&wind_speed_unit=kmh` +
-    `&timezone=auto` +
+    `&timezone=Asia%2FKolkata` +
     `&forecast_days=5`;
 
   const response = await fetch(url);

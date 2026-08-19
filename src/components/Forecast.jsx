@@ -9,10 +9,18 @@ import WeatherIcon from "./WeatherIcon";
 function formatDate(dateString) {
   const date = new Date(`${dateString}T00:00:00+05:30`);
 
-  return date.toLocaleDateString("en-IN", {
-    weekday: "short",
-    timeZone: "Asia/Kolkata",
-  });
+  return {
+    day: date.toLocaleDateString("en-IN", {
+      weekday: "short",
+      timeZone: "Asia/Kolkata",
+    }),
+
+    date: date.toLocaleDateString("en-IN", {
+      day: "2-digit",
+      month: "short",
+      timeZone: "Asia/Kolkata",
+    }),
+  };
 }
 
 function Forecast({ daily, unit }) {
@@ -38,7 +46,10 @@ function Forecast({ daily, unit }) {
 
           return (
             <div className="forecast-card" key={date}>
-              <h3>{formatDate(date)}</h3>
+              <div className="forecast-date">
+                <h3>{formatDate(date).day}</h3>
+                <span>{formatDate(date).date}</span>
+              </div>
 
               <div className="forecast-icon">
                 <WeatherIcon slug={iconSlug} size={64} />
