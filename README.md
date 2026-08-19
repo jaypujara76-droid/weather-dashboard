@@ -85,23 +85,26 @@ weather-dashboard/
 ├── package-lock.json
 ├── vite.config.js
 └── README.md
-
+```
 ---
 
 ## Installation
 
 Clone the repository:
-
+```bash
 git clone https://github.com/jaypujara76-droid/weather-dashboard.git
+```
 
 Move into the project:
-
+```bash
 cd weather-dashboard
+```
 
 Install dependencies:
-
+```bash
 npm install
-
+```
+---
 ## Run the Application
 
 Start the development server:
