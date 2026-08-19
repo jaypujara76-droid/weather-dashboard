@@ -4,32 +4,50 @@ import {
   convertTemperature,
 } from "../utils/weatherUtils";
 
-function WeatherCard({ weather, unit }) {
-  const code = weather.current.weather_code;
-  
-    const Icon = getWeatherIcon(code);
+import WeatherIcon from "./WeatherIcon";
 
-  const temperature = convertTemperature(weather.current.temperature_2m, unit);
+function WeatherCard({ weather, unit }) {
+  const temperature = convertTemperature(
+    weather.current.temperature_2m,
+    unit
+  );
+
+  const iconSlug = getWeatherIcon(
+    weather.current.weather_code
+  );
 
   return (
-    <div className="weather-card">
-      <h2>
+    <div className="preview-card">
+      <h3>
         {weather.cityName}, {weather.country}
-      </h2>
+      </h3>
 
-      <div className="weather-icon">
-        <Icon size={70} strokeWidth={2} />
+      <div className="current-weather-icon">
+        <WeatherIcon
+          slug={iconSlug}
+          size={100}
+        />
       </div>
 
-      <h1>
+      <p className="temperature">
         {temperature.toFixed(1)}°{unit}
-      </h1>
+      </p>
 
-      <h3>{getWeatherCondition(code)}</h3>
+      <p>
+        {getWeatherCondition(
+          weather.current.weather_code
+        )}
+      </p>
 
-      <p>Humidity: {weather.current.relative_humidity_2m}%</p>
+      <p>
+        Humidity:{" "}
+        {weather.current.relative_humidity_2m}%
+      </p>
 
-      <p>Wind: {weather.current.wind_speed_10m} km/h</p>
+      <p>
+        Wind:{" "}
+        {weather.current.wind_speed_10m} km/h
+      </p>
     </div>
   );
 }

@@ -4,6 +4,8 @@ import {
   convertTemperature,
 } from "../utils/weatherUtils";
 
+import WeatherIcon from "./WeatherIcon";
+
 function formatDate(dateString) {
   const date = new Date(dateString);
 
@@ -31,15 +33,17 @@ function Forecast({ daily, unit }) {
 
           const code = daily.weather_code[index];
 
-          // Get Lucide icon component
-          const Icon = getWeatherIcon(code);
+          const iconSlug = getWeatherIcon(code);
 
           return (
             <div className="forecast-card" key={date}>
               <h3>{formatDate(date)}</h3>
 
               <div className="forecast-icon">
-                <Icon size={50} strokeWidth={1.5} />
+                <WeatherIcon
+                  slug={iconSlug}
+                  size={64}
+                />
               </div>
 
               <p>{getWeatherCondition(code)}</p>

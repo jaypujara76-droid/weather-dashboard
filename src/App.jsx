@@ -5,6 +5,7 @@ import TemperatureToggle from "./components/TemperatureToggle";
 import Forecast from "./components/Forecast";
 import "./App.css";
 import SearchBar from "./components/SearchBar";
+import WeatherCard from "./components/WeatherCard";
 
 function App() {
   const [city, setCity] = useState("");
@@ -168,22 +169,7 @@ function App() {
         <div>
           <h2>Current Weather</h2>
 
-          <div className="preview-card">
-            <h3>
-              {weather.cityName}, {weather.country}
-            </h3>
-
-            <p>
-              {unit === "C"
-                ? weather.current.temperature_2m
-                : ((weather.current.temperature_2m * 9) / 5 + 32).toFixed(1)}
-              °{unit}
-            </p>
-
-            <p>Humidity: {weather.current.relative_humidity_2m}%</p>
-
-            <p>Wind: {weather.current.wind_speed_10m} km/h</p>
-          </div>
+          <WeatherCard weather={weather} unit={unit} />
         </div>
       )}
 
