@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { searchCity, getWeather } from "./services/weatherApi";
 import CityList from "./components/CityList";
 import TemperatureToggle from "./components/TemperatureToggle";
@@ -12,12 +12,56 @@ function App() {
   const [savedCities, setSavedCities] = useState(() => {
     const saved = localStorage.getItem("savedCities");
 
-    if (saved) {
-      return JSON.parse(saved);
+    if (!saved) {
+      return [];
     }
 
-    return [];
+    try {
+      const parsed = JSON.parse(saved);
+
+      return parsed.map((city) => ({
+        cityName: city.cityName,
+        country: city.country,
+        latitude: city.latitude,
+        longitude: city.longitude,
+      }));
+    } catch (error) {
+      console.error("Error reading saved cities:", error);
+      return [];
+    }
   });
+  const [savedWeather, setSavedWeather] = useState([]);
+  useEffect(() => {
+    const loadSavedWeather = async () => {
+      if (savedCities.length === 0) {
+        setSavedWeather([]);
+        return;
+      }
+
+      try {
+        const weatherResults = await Promise.all(
+          savedCities.map(async (city) => {
+            const weatherData = await getWeather(city.latitude, city.longitude);
+
+            return {
+              cityName: city.cityName,
+              country: city.country,
+              latitude: city.latitude,
+              longitude: city.longitude,
+              current: weatherData.current,
+              daily: weatherData.daily,
+            };
+          }),
+        );
+
+        setSavedWeather(weatherResults);
+      } catch (error) {
+        console.error("Error loading saved city weather:", error);
+      }
+    };
+
+    loadSavedWeather();
+  }, [savedCities]);
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -59,8 +103,7 @@ function App() {
       setLoading(false);
     }
   };
-
-  const saveCity = () => {
+  const saveCity = async () => {
     if (!weather) {
       setError("Please search for a city first");
       return;
@@ -76,11 +119,20 @@ function App() {
       return;
     }
 
-    const updatedCities = [...savedCities, weather];
+    const cityToSave = {
+      cityName: weather.cityName,
+      country: weather.country,
+      latitude: weather.latitude,
+      longitude: weather.longitude,
+    };
+
+    const updatedCities = [...savedCities, cityToSave];
 
     setSavedCities(updatedCities);
 
     localStorage.setItem("savedCities", JSON.stringify(updatedCities));
+
+    setSavedWeather((previousWeather) => [...previousWeather, weather]);
 
     setError("");
   };
@@ -151,11 +203,11 @@ function App() {
       {weather && <Forecast daily={weather.daily} unit={unit} />}
 
       {/* Saved Cities */}
-      {savedCities.length > 0 && (
+      {savedWeather.length > 0 && (
         <div>
           <h2>Saved Cities</h2>
 
-          <CityList cities={savedCities} unit={unit} />
+          <CityList cities={savedWeather} unit={unit} />
         </div>
       )}
     </div>

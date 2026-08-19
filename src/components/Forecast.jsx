@@ -21,21 +21,26 @@ function Forecast({ daily, unit }) {
         {daily.time.map((date, index) => {
           const maxTemperature = convertTemperature(
             daily.temperature_2m_max[index],
-            unit,
+            unit
           );
 
           const minTemperature = convertTemperature(
             daily.temperature_2m_min[index],
-            unit,
+            unit
           );
 
           const code = daily.weather_code[index];
+
+          // Get Lucide icon component
+          const Icon = getWeatherIcon(code);
 
           return (
             <div className="forecast-card" key={date}>
               <h3>{formatDate(date)}</h3>
 
-              <div className="forecast-icon">{getWeatherIcon(code)}</div>
+              <div className="forecast-icon">
+                <Icon size={50} strokeWidth={1.5} />
+              </div>
 
               <p>{getWeatherCondition(code)}</p>
 

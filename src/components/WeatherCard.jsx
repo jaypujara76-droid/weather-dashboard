@@ -6,6 +6,8 @@ import {
 
 function WeatherCard({ weather, unit }) {
   const code = weather.current.weather_code;
+  
+    const Icon = getWeatherIcon(code);
 
   const temperature = convertTemperature(weather.current.temperature_2m, unit);
 
@@ -15,7 +17,9 @@ function WeatherCard({ weather, unit }) {
         {weather.cityName}, {weather.country}
       </h2>
 
-      <div className="weather-icon">{getWeatherIcon(code)}</div>
+      <div className="weather-icon">
+        <Icon size={70} strokeWidth={2} />
+      </div>
 
       <h1>
         {temperature.toFixed(1)}°{unit}
