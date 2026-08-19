@@ -13,7 +13,7 @@ Weather data is provided by the Open-Meteo API.
 - Display wind speed
 - Save multiple cities
 - Automatically refresh weather for saved cities
-- Toggle between Celsius (°C) and Fahrenheit (°F)
+- Toggle between Celsius and Fahrenheit 
 - Display a 5-day weather forecast
 - Persist saved cities using `localStorage`
 - Loading state while fetching weather
@@ -24,15 +24,14 @@ Weather data is provided by the Open-Meteo API.
 
 ## Technologies Used
 
-- React
-- JavaScript
-- HTML5
-- CSS3
+- React.js
 - Vite
 - Open-Meteo API
-- Lucide React
+- Meteocons
 - Browser Local Storage
 - Git & GitHub
+- JavaScript
+- CSS
 
 ---
 
@@ -49,7 +48,28 @@ Open-Meteo provides:
 - Daily maximum/minimum temperature
 - 5-day forecast
 
+The application uses Indian Standard Time (Asia/Kolkata) for weather dates.
 It does not require an API key.
+
+---
+
+## Weather Icons
+
+
+This project uses Meteocons for weather icons.
+
+Weather conditions are mapped from Open-Meteo weather codes to Meteocons icons.
+
+Examples:
+
+- Clear sky
+- Partly cloudy
+- Cloudy
+- Fog
+- Rain
+- Snow
+- Rain showers
+- Thunderstorm
 
 ---
 
