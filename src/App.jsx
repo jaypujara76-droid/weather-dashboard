@@ -4,6 +4,7 @@ import CityList from "./components/CityList";
 import TemperatureToggle from "./components/TemperatureToggle";
 import Forecast from "./components/Forecast";
 import "./App.css";
+import SearchBar from "./components/SearchBar";
 
 function App() {
   const [city, setCity] = useState("");
@@ -142,28 +143,15 @@ function App() {
       <h1>Weather Dashboard</h1>
 
       {/* Search */}
-      <div className="search-container">
-        <input
-          type="text"
-          placeholder="Enter city name"
-          value={city}
-          onChange={(e) => setCity(e.target.value)}
-          onKeyDown={(e) => {
-            if (e.key === "Enter") {
-              handleSearch();
-            }
-          }}
-        />
+      <SearchBar
+        city={city}
+        setCity={setCity}
+        onSearch={handleSearch}
+        onSave={saveCity}
+        disabled={!weather}
+      />
 
-        <button onClick={handleSearch}>Search</button>
-
-        <TemperatureToggle unit={unit} setUnit={setUnit} />
-
-        <button onClick={saveCity} disabled={!weather}>
-          Save City
-        </button>
-      </div>
-
+      <TemperatureToggle unit={unit} setUnit={setUnit} />
       {/* Loading */}
       {loading && (
         <div className="loading">
