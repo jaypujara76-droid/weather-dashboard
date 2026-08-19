@@ -87,7 +87,7 @@ function App() {
 
   return (
     <div className="app">
-      <h1>🌤️ Multi-City Weather Dashboard</h1>
+      <h1>Weather Dashboard</h1>
 
       {/* Search */}
       <div className="search-container">
