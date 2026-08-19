@@ -122,7 +122,7 @@ http://localhost:5173
 Open-Meteo provides a numeric weather code.
 
 The application maps these codes to icons using lucide-react.
-
+```bash
 Example:
 0       → Clear sky
 1–2     → Partly cloudy
@@ -132,7 +132,7 @@ Example:
 71–77   → Snow
 80–82   → Rain showers
 95+     → Thunderstorm
-
+```
 ---
 
 ## Saved Cities
@@ -140,10 +140,10 @@ Example:
 Saved cities are persisted using browser localStorage.
 
 Only the city information and coordinates are stored:
-City name
-Country
-Latitude
-Longitude
+- City name
+- Country
+- Latitude
+- Longitude
 
 When the application loads, it uses those coordinates to fetch the latest weather data.
 
@@ -153,23 +153,23 @@ This prevents stale weather information from being displayed after a page refres
 ## Git Branching Strategy
 
 The Project uses a simple feature-branch workflow.
-
+``` bash
 main
  |
  |--feature/current-weather-ui
  |
  |--other feature branches
-
+```
 Features are developed on separate branches and merged into main after testing.
 
 ## Responsive Design
 
 The dashboard is designed to work across:
 
-Desktop
-Laptop
-Tablet
-Mobile
+- Desktop
+- Laptop
+- Tablet
+- Mobile
 
 CSS Grid and Flexbox are used to make the weather cards responsive.
 
@@ -178,14 +178,14 @@ CSS Grid and Flexbox are used to make the weather cards responsive.
 
 Possible future improvements include:
 
-Hourly forecast
-Weather alerts
-Automatic location detection
-Weather charts
-Dark mode
-Unit selection for wind speed
-More detailed weather information
-Automated testing
+- Hourly forecast
+- Weather alerts
+- Automatic location detection
+- Weather charts
+- Dark mode
+- Unit selection for wind speed
+- More detailed weather information
+- Automated testing
 
 ---
 ## Author
