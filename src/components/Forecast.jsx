@@ -1,15 +1,20 @@
 import {
   getWeatherCondition,
-  getWeatherIcon,
   convertTemperature,
 } from "../utils/weatherUtils";
-
+import WeatherIcon from "./WeatherIcon";
 function formatDate(dateString) {
-  const date = new Date(dateString);
+  const date = new Date(`${dateString}T00:00:00`);
 
-  return date.toLocaleDateString("en-US", {
-    weekday: "short",
-  });
+  return {
+    day: date.toLocaleDateString("en-IN", {
+      weekday: "short",
+    }),
+    date: date.toLocaleDateString("en-IN", {
+      day: "2-digit",
+      month: "short",
+    }),
+  };
 }
 
 function Forecast({ daily, unit }) {
@@ -33,9 +38,13 @@ function Forecast({ daily, unit }) {
 
           return (
             <div className="forecast-card" key={date}>
-              <h3>{formatDate(date)}</h3>
+              <h3>
+                {formatDate(date).day}, {formatDate(date).date}
+              </h3>
 
-              <div className="forecast-icon">{getWeatherIcon(code)}</div>
+              <div className="forecast-icon">
+                <WeatherIcon code={code} size={70} />
+              </div>
 
               <p>{getWeatherCondition(code)}</p>
 

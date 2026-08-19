@@ -3,6 +3,7 @@ import { searchCity, getWeather } from "./services/weatherApi";
 import CityList from "./components/CityList";
 import TemperatureToggle from "./components/TemperatureToggle";
 import Forecast from "./components/Forecast";
+import WeatherCard from "./components/WeatherCard";
 import "./App.css";
 
 function App() {
@@ -127,23 +128,7 @@ function App() {
       {weather && (
         <div>
           <h2>Current Weather</h2>
-
-          <div className="preview-card">
-            <h3>
-              {weather.cityName}, {weather.country}
-            </h3>
-
-            <p>
-              {unit === "C"
-                ? weather.current.temperature_2m
-                : ((weather.current.temperature_2m * 9) / 5 + 32).toFixed(1)}
-              °{unit}
-            </p>
-
-            <p>Humidity: {weather.current.relative_humidity_2m}%</p>
-
-            <p>Wind: {weather.current.wind_speed_10m} km/h</p>
-          </div>
+          <WeatherCard weather={weather} unit={unit} />
         </div>
       )}
 

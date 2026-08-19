@@ -12,22 +12,38 @@ export function getWeatherCondition(code) {
 }
 
 export function getWeatherIcon(code) {
-  if (code === 0) return "☀️";
-  if (code === 1 || code === 2) return "🌤️";
-  if (code === 3) return "☁️";
-  if (code >= 45 && code <= 48) return "🌫️";
-  if (code >= 51 && code <= 67) return "🌧️";
-  if (code >= 71 && code <= 77) return "❄️";
-  if (code >= 80 && code <= 82) return "🌦️";
-  if (code >= 95) return "⛈️";
+  if (code === 0) return "clear-day";
 
-  return "🌍";
+  if (code === 1 || code === 2) {
+    return "partly-cloudy-day";
+  }
+
+  if (code === 3) return "overcast";
+
+  if (code >= 45 && code <= 48) {
+    return "fog";
+  }
+
+  if (code >= 51 && code <= 67) {
+    return "rain";
+  }
+
+  if (code >= 71 && code <= 77) {
+    return "snow";
+  }
+
+  if (code >= 80 && code <= 82) {
+    return "rain";
+  }
+
+  if (code >= 95) {
+    return "thunderstorms-day-rain";
+  }
+
+  return "not-available";
 }
 
-export function convertTemperature(
-  celsius,
-  unit
-) {
+export function convertTemperature(celsius, unit) {
   if (unit === "F") {
     return (celsius * 9) / 5 + 32;
   }

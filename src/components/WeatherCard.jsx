@@ -1,27 +1,48 @@
-import {
-  getWeatherCondition,
-  getWeatherIcon,
-  convertTemperature,
-} from "../utils/weatherUtils";
+import WeatherIcon from "./WeatherIcon";
+import { getWeatherCondition, convertTemperature } from "../utils/weatherUtils";
 
 function WeatherCard({ weather, unit }) {
-  const code = weather.current.weather_code;
+  if (!weather || !weather.current) {
+    return null;
+  }
 
   const temperature = convertTemperature(weather.current.temperature_2m, unit);
 
+  const weatherCode = weather.current.weather_code;
+  const currentDate = new Date(weather.current.time);
+
+  const formattedDate = currentDate.toLocaleDateString("en-IN", {
+    weekday: "short",
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+  });
+
+  // const formattedTime = currentDate.toLocaleTimeString("en-IN", {
+  //   hour: "2-digit",
+  //   minute: "2-digit",
+  //   hour12: true,
+  // });
+
   return (
-    <div className="weather-card">
-      <h2>
+    <div className="preview-card">
+      <h3>
         {weather.cityName}, {weather.country}
-      </h2>
+      </h3>
 
-      <div className="weather-icon">{getWeatherIcon(code)}</div>
+      <p className="current-date">{formattedDate}</p>
 
-      <h1>
+      {/* <p className="current-time">{formattedTime}</p> */}
+      
+      <div className="current-weather-icon">
+        <WeatherIcon code={weatherCode} size={100} />
+      </div>
+
+      <p className="temperature">
         {temperature.toFixed(1)}°{unit}
-      </h1>
+      </p>
 
-      <h3>{getWeatherCondition(code)}</h3>
+      <p>{getWeatherCondition(weatherCode)}</p>
 
       <p>Humidity: {weather.current.relative_humidity_2m}%</p>
 
