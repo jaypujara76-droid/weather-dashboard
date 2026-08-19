@@ -46,7 +46,6 @@
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.58);
   box-shadow: 0 12px 35px rgba(16, 42, 67, 0.08);
-  backdrop-filter: blur(14px);
 }
 
 .search-container input {
@@ -149,7 +148,7 @@
   border: 1px solid rgba(255, 255, 255, 0.75);
   background: var(--paper);
   box-shadow: var(--shadow);
-  backdrop-filter: blur(16px);
+  
 }
 
 .preview-card {
