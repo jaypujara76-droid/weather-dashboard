@@ -4,6 +4,11 @@
 
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f5f5f5;
+  min-width: 320px;
+  color: #102a43;
+  font-family: "DM Sans", sans-serif;
+  background:
+    radial-gradient(circle at 88% 8%, rgba(239, 131, 84, 0.24), transparent 24%),
+    radial-gradient(circle at 8% 80%, rgba(8, 127, 140, 0.2), transparent 28%),
+    linear-gradient(135deg, #f4fbfb 0%, #dff3f5 48%, #f8eee8 100%);
 }
