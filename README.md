@@ -86,6 +86,8 @@ weather-dashboard/
 ├── vite.config.js
 └── README.md
 
+---
+
 ## Installation
 
 Clone the repository:
@@ -110,6 +112,8 @@ Vite will provide a local URL such as:
 
 http://localhost:5173
 
+---
+
 ## Weather Icons
 
 Open-Meteo provides a numeric weather code.
@@ -126,6 +130,8 @@ Example:
 80–82   → Rain showers
 95+     → Thunderstorm
 
+---
+
 ## Saved Cities
 
 Saved cities are persisted using browser localStorage.
@@ -140,6 +146,7 @@ When the application loads, it uses those coordinates to fetch the latest weathe
 
 This prevents stale weather information from being displayed after a page refresh
 
+---
 ## Git Branching Strategy
 
 The Project uses a simple feature-branch workflow.
@@ -163,6 +170,7 @@ Mobile
 
 CSS Grid and Flexbox are used to make the weather cards responsive.
 
+---
 ## Future Improvements
 
 Possible future improvements include:
@@ -176,6 +184,7 @@ Unit selection for wind speed
 More detailed weather information
 Automated testing
 
+---
 ## Author
 Jaydeep Poojara
 Github:
